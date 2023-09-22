@@ -1,5 +1,5 @@
 import createDataContext from './createDataContext';
-
+const token = "tokenForSignedInUser";
 
 const appReducer = (state, action) => {
     switch (action.type){
@@ -7,6 +7,11 @@ const appReducer = (state, action) => {
         return {
           ...state,
           themeDark: action.payload
+        }
+      case 'setUser':
+        return {
+          ...state,
+          user: action.payload
         }
       default:
           return state;
@@ -21,13 +26,31 @@ const appReducer = (state, action) => {
       })
   } 
 
+  const logout = (dispatch) => () => {
+    localStorage.removeItem("token");
+    dispatch({
+      type: 'setUser',
+      payload: null
+    })
+  }
+
+  const login = (dispatch) => () => {
+    localStorage.setItem("token", token);
+    dispatch({
+      type: 'setUser',
+      payload: token
+    })
+  }
 
   export const { Context, Provider } = createDataContext(
     appReducer,
     {
-      changeTheming
+      changeTheming,
+      logout,
+      login,
     },
     {
-      themeDark: false
+      themeDark: false,
+      user: null,
     }
 );

@@ -14,6 +14,9 @@ module.exports = {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
+    colors: {
+      yellow: 'yellow'
+    },
     extend: {
       spacing: {
         '128': '32rem',
@@ -33,6 +36,10 @@ module.exports = {
             colors: {
               primary: 'black',
               secondary: 'white',
+              yellow: 'yellow',
+              green: 'green',
+              orange: 'orange',
+              tomato: 'tomato'
             }
           }
         },
@@ -42,6 +49,10 @@ module.exports = {
             colors: {
               primary: 'white',
               secondary: 'black',
+              yellow: 'yellow',
+              green: 'green',
+              orange: 'orange',
+              tomato: 'tomato'
             }
           }
         }
