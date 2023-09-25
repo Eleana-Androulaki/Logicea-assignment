@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import '../App.scss';
 import { Context as AppContext } from '../context/appContext';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { Container } from "@mui/material";
-import Button from '@mui/material/Button';
+import CustomButton from "../components/CustomButton";
+import CustomCheckbox from "../components/CustomCheckbox";
 
 const MainLayout = ({children}) => {
     const { state: { themeDark }, changeTheming, logout } = useContext(AppContext);
@@ -17,32 +15,28 @@ const MainLayout = ({children}) => {
                 bg-secondary text-primary h-full`
             }
         >
-            <Container>
+            <div className="px-20">
                 {token && 
                     <div className="text-end">
                         <div className="w-full pt-5">
-                            <Button 
-                                variant="contained"
-                                onClick={logout}
+                            <CustomButton
+                                handleClick={logout}
+                                classes="bg-blue text-white"
                             >
                                 Logout
-                            </Button>
+                            </CustomButton>
                         </div>
-                        <FormControlLabel 
-                            control={
-                                <Checkbox
-                                    defaultChecked={themeDark}
-                                    onChange={() => {changeTheming(!themeDark)}}
-                                />
-                            } 
-                            label="Dark" 
+                        <CustomCheckbox 
+                            label="Dark"
+                            checked={themeDark}
+                            handleChange={() => {changeTheming(!themeDark)}}
                         />
                     </div>
                 }
                 <div className="App">
                     {children}
                 </div>
-            </Container>
+            </div>
         </div>
     )
 }

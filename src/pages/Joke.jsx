@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import mainApi from "../api/mainApi";
 import CustomInput from "../components/CustomInput";
-import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import baseUrl from "../api/baseUrl";
+import CustomButton from "../components/CustomButton";
 
 
 const inputs = [
@@ -112,29 +112,25 @@ const Joke = () => {
                 })
             }
             <div className="mt-20">
-                <Button 
-                    variant="contained" 
-                    color="success" 
-                    sx={{marginRight: 10}}
-                    onClick={handleSubmit}
+                <CustomButton
+                    handleClick={handleSubmit}
+                    classes="bg-green text-white mr-10"
                 >
                     Submit
-                </Button>
-                <Button 
-                    variant="contained" 
-                    sx={{marginRight: 10}}
-                    onClick={ ()=>navigate('/')}
+                </CustomButton>
+                <CustomButton
+                    handleClick={()=>navigate('/')}
+                    classes="bg-blue text-white mr-10"
                 >
                     Close
-                </Button>
+                </CustomButton>
                 {joke && id &&
-                    <Button 
-                        variant="contained" 
-                        color="error"
-                        onClick={handleDelete}
+                    <CustomButton
+                        handleClick={handleDelete}
+                        classes="bg-red text-white"
                     >
                         Delete
-                    </Button>
+                    </CustomButton>
                 }
             </div>
         </div>

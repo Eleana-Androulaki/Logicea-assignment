@@ -39,7 +39,10 @@ module.exports = {
               yellow: 'yellow',
               green: 'green',
               orange: 'orange',
-              tomato: 'tomato'
+              tomato: 'tomato',
+              white: 'white',
+              blue: '#1976d2',
+              red: 'red'
             }
           }
         },
@@ -52,7 +55,10 @@ module.exports = {
               yellow: 'yellow',
               green: 'green',
               orange: 'orange',
-              tomato: 'tomato'
+              tomato: 'tomato',
+              white: 'white',
+              blue: '#1976d2',
+              red: 'red'
             }
           }
         }

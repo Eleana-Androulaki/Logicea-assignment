@@ -4,7 +4,7 @@ import JokesNavigator from "../components/JokesNavigator";
 import mainApi from "../api/mainApi";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import CustomButton from "../components/CustomButton";
 
 const headers = [
     'Title',
@@ -52,10 +52,10 @@ const Home = () => {
 
     return (
         <React.Fragment>
-            <div className="flex flex-wrap w-full">
+            <div className="flex flex-wrap w-full text-left">
                 {
                     headers.map((header,idx) => (
-                        <div key={idx} className="w-1/4 font-bold mb-5">
+                        <div key={idx} className="w-1/4 font-bold mb-5 px-5">
                             {header}
                         </div>
                     ))
@@ -64,18 +64,18 @@ const Home = () => {
                     jokes?.map(({author, createdAt = null,  id, title, views}) => {
                         return (
                             <React.Fragment key={id}>
-                                <div className="w-1/4 border-r border-primary">
+                                <div className="w-1/4 border-r border-primary px-5">
                                     <Link to={`/joke/${id}`}>{title}</Link>
                                 </div>
-                                <div className="w-1/4 border-r border-primary">
+                                <div className="w-1/4 border-r border-primary px-5">
                                     {
                                         author.substring(0,author.indexOf('@')+1)+'***'+author.substring(author.indexOf('.'))
                                     }
                                 </div>
-                                <div className="w-1/4 border-r border-primary">
+                                <div className="w-1/4 border-r border-primary px-5">
                                     { createdAt ? moment(createdAt).format('DD MMM YYYY') : '-'}
                                 </div>
-                                <div className="w-1/4">
+                                <div className="w-1/4 px-5">
                                     <span className={
                                         viewColor.find(({max}) => 
                                             parseInt(views) <= max)?.class || 'text-primary'
@@ -95,13 +95,12 @@ const Home = () => {
                     setLimit={setLimit}
                 />
                 <div className="w-full mt-20">
-                    <Button 
-                        variant="contained" 
-                        onClick={ ()=>navigate('/joke')}
-                        color="success"
+                    <CustomButton
+                        handleClick={ ()=>navigate('/joke')}
+                        classes="bg-green text-white"
                     >
                         Add Joke
-                    </Button>
+                    </CustomButton>
                 </div>
             </div>
         </React.Fragment>

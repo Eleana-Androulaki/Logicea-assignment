@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
-import Button from '@mui/material/Button';
+import CustomButton from "../components/CustomButton";
 import { Context as AppContext } from '../context/appContext';
 
 const Login = () => {
     const { login } = useContext(AppContext);
     return (
         <div className="mt-20">
-            <Button variant="contained" onClick={login}>Login</Button>
+            <CustomButton
+                handleClick={login}
+                classes="bg-blue text-white"
+            >
+                Login
+            </CustomButton>
         </div>
     )
 }
